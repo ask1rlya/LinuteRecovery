@@ -41,7 +41,7 @@ jobs:
       - name: Clone Device Tree
         run: |
           cd ~/orangefox
-          git clone https://github.com -b lineage-23.0 device/xiaomi/fog
+          git clone https://github.com/ask1rlya -b lineage-23.0 device/xiaomi/fog
 
       - name: Start Compilation
         run: |
