@@ -17,15 +17,20 @@ jobs:
 
       - name: Setup Linute (OrangeFox) Sync
         run: |
-          mkdir ~/orangefox
+          mkdir -p ~/orangefox
           cd ~/orangefox
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          # Клонируем официальный скрипт синхронизации
-          git clone https://gitlab.com/OrangeFox/sync/-/blob/master -b master /orangefox_sync.sh
-          cd ~/orangefox/sync
-          # Запускаем скрипт: он сам выкачает все исходники для ветки 12.1
+          
+          # Клонируем ВЕСЬ репозиторий по твоей ссылке
+          git clone https://gitlab.com/OrangeFox/sync/-/tree/master/
+          
+          # Переходим в скачанную папку
+          cd sync
+          
+          # Запускаем основной скрипт синхронизации
           bash orangefox_sync.sh --branch 12.1 --path ~/orangefox
+
 
 
 
