@@ -19,13 +19,16 @@ jobs:
         run: |
           mkdir ~/orangefox
           cd ~/orangefox
-          # Эта магия решит проблему с аутентификацией:
           git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           
-          repo init --no-repo-verify --depth=1 -u https://github.com/OrangeFoxRecovery/Manifest.git -b 12.1
+          # Твоя новая правильная ссылка
+          repo init --no-repo-verify --depth=1 -u https://github.com/OrangeFoxRecovery/fox-6.0_manifest -b fox-6.0
+          
+          # Начинаем качать (теперь точно должно пойти!)
           repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle --prune
+
 
 
 
