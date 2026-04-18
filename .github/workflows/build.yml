@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Linute
-        uses: OrangeFoxRecovery/build-action@main
+        uses: OrangeFoxRecovery/OrangeFox-Builder@main
         with:
           DEVICE_NAME: fog
           DEVICE_TREE: https://github.com
