@@ -27,8 +27,9 @@ jobs:
 
       - name: Start Compilation
         run: |
+          set -x
           cd /home/runner/orangefox
           export ALLOW_MISSING_DEPENDENCIES=true
-          source build/envsetup.sh
-          lunch twrp_fog-eng
-          mka recoveryimage
+          source build/envsetup.sh 2>&1
+          lunch twrp_fog-eng 2>&1
+          mka recoveryimage 2>&1
