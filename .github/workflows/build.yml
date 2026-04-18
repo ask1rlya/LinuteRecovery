@@ -23,7 +23,7 @@ jobs:
           git config --global user.name "Your Name"
           
           # Клонируем ВЕСЬ репозиторий по твоей ссылке
-          git clone https://gitlab.com/OrangeFox/sync/-/tree/master/
+          git clone https://gitlab.com/OrangeFox/sync/-/tree/master/info/refs?service=git-upload-pack
           
           # Переходим в скачанную папку
           cd sync
