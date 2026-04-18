@@ -22,7 +22,7 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           # Клонируем официальный скрипт синхронизации
-          git clone https://gitlab.com/OrangeFox/sync/-/blob/master/orangefox_sync.sh -b master ~/orangefox/sync
+          git clone https://gitlab.com/OrangeFox/sync/-/blob/master -b master /orangefox_sync.sh
           cd ~/orangefox/sync
           # Запускаем скрипт: он сам выкачает все исходники для ветки 12.1
           bash orangefox_sync.sh --branch 12.1 --path ~/orangefox
