@@ -22,14 +22,15 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           
-          # Клонируем ВЕСЬ репозиторий по твоей ссылке
-          git clone https://gitlab.com/OrangeFox/sync/-/tree/master/info/refs?service=git-upload-pack
+          # Используем только чистую ссылку на репозиторий
+          git clone https://gitlab.com sync_folder
           
-          # Переходим в скачанную папку
-          cd sync
+          # Переходим именно в ту папку, которую создали выше
+          cd sync_folder
           
-          # Запускаем основной скрипт синхронизации
+          # Запускаем скрипт
           bash orangefox_sync.sh --branch 12.1 --path ~/orangefox
+
 
 
 
