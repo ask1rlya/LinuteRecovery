@@ -22,7 +22,7 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           # Используем Гитхаб-зеркало вместо Гитлаба
-          repo init --depth=1 -u https://github.com -b 12.1
+          repo init --no-repo-verify --depth=1 -u https://github.com/OrangeFoxRecovery/Manifest.git -b 12.1
           # Начинаем закачку
           repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle --prune
 
