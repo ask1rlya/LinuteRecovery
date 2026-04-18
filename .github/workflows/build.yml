@@ -21,11 +21,11 @@ jobs:
           cd ~/orangefox
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          # Скачиваем загрузчик исходников
-          git clone https://gitlab.com
-          cd scripts
-          # Запускаем синхронизацию (это будет долго!)
-          bash setup/android_build_setup.sh
+          # Используем официальный способ инициализации через Google Repo
+          repo init --depth=1 -u https://gitlab.com -b 12.1
+          # Начинаем закачку (это самый долгий процесс)
+          repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle --prune
+
           
       - name: Clone Device Tree
         run: |
