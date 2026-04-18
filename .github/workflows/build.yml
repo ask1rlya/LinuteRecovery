@@ -19,17 +19,16 @@ jobs:
         run: |
           mkdir -p ~/orangefox
           cd ~/orangefox
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
           
-          # Используем только чистую ссылку на репозиторий
-          git clone https://gitlab.com/OrangeFox/sync.git sync_folder
+          # Скачиваем скрипты по ПРЯМОЙ ссылке из репозитория
+          git clone https://gitlab.com/OrangeFox/sync.git
           
-          # Переходим именно в ту папку, которую создали выше
-          cd sync_folder
+          # Заходим в папку
+          cd sync
           
-          # Запускаем скрипт
-          bash orangefox_sync.sh --branch 12.1 --path ~/orangefox
+          # Запускаем сам скрипт (используем ПОЛНЫЙ путь)
+          bash orangefox_sync.sh --branch 12.1 --path /home/runner/orangefox
+
 
 
 
