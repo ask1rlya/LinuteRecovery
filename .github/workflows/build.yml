@@ -1,8 +1,6 @@
 name: Linute Recovery Build
-
 on:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,29 +17,18 @@ jobs:
         run: |
           mkdir -p ~/orangefox
           cd ~/orangefox
-          
-          # Скачиваем скрипты по ПРЯМОЙ ссылке из репозитория
           git clone https://gitlab.com/OrangeFox/sync.git
-          
-          # Заходим в папку
           cd sync
-          
-          # Запускаем сам скрипт (используем ПОЛНЫЙ путь)
           bash orangefox_sync.sh --branch 12.1 --path /home/runner/orangefox
 
-
-
-
-
-
-
-
-          
-           - name: Clone Device Tree
-          run: |
-          cd ~/orangefox
-          git clone https://github.com/ask1rlya/device_xiaomi_fog -b lineage-23.0 device/xiaomi/fog
+      - name: Clone Device Tree
+        run: |
+          git clone https://github.com/ask1rlya/device_xiaomi_fog /home/runner/orangefox/device/xiaomi/fog
 
       - name: Start Compilation
         run: |
-          echo "Здесь начнется магия сборки Linute..."
+          cd /home/runner/orangefox
+          export ALLOW_MISSING_DEPENDENCIES=true
+          source build/envsetup.sh
+          lunch twrp_fog-eng
+          mka recoveryimage
