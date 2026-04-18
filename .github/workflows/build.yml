@@ -23,13 +23,15 @@ jobs:
 
       - name: Clone Device Tree
         run: |
-          git clone https://github.com/ask1rlya/device_xiaomi_fog /home/runner/orangefox/device/xiaomi/fog
-
+          git clone https://github.com/cd-Crypton/android_device_xiaomi_fog-TWRP \
+            -b android-12.1 \
+            /home/runner/orangefox/device/xiaomi/fog
+            
       - name: Start Compilation
         run: |
-          set -x
           cd /home/runner/orangefox
           export ALLOW_MISSING_DEPENDENCIES=true
-          source build/envsetup.sh 2>&1
-          lunch twrp_fog-eng 2>&1
-          mka recoveryimage 2>&1
+          export FOX_BUILD_TYPE=Unofficial
+          source build/envsetup.sh
+          lunch twrp_fog-eng
+          mka recoveryimage 2>&1 | tee build.log
