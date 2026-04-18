@@ -19,15 +19,14 @@ jobs:
         run: |
           mkdir ~/orangefox
           cd ~/orangefox
-          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          
-          # Твоя новая правильная ссылка
-          repo init --no-repo-verify --depth=1 -u https://github.com/OrangeFoxRecovery/fox-6.0_manifest -b fox_6.0
-          
-          # Начинаем качать (теперь точно должно пойти!)
-          repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle --prune
+          # Клонируем официальный скрипт синхронизации
+          git clone https://gitlab.com/OrangeFox/sync/-/tree/master?ref_type=heads -b master ~/orangefox/sync
+          cd ~/orangefox/sync
+          # Запускаем скрипт: он сам выкачает все исходники для ветки 12.1
+          bash orangefox_sync.sh --branch 12.1 --path ~/orangefox
+
 
 
 
