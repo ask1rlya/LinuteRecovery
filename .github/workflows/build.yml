@@ -15,5 +15,6 @@ jobs:
         with:
           DEVICE_NAME: fog
           DEVICE_TREE: https://github.com
-          DEVICE_TREE_BRANCH: lineage-23
+          DEVICE_TREE_BRANCH: lineage-23.0
           BUILD_TARGET: recovery
+          
