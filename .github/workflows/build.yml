@@ -1,0 +1,19 @@
+name: Linute Recovery Build
+
+on:
+  workflow_dispatch: # Это создаст кнопку запуска
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Linute
+        uses: OrangeFoxRecovery/build-action@main
+        with:
+          DEVICE_NAME: fog
+          DEVICE_TREE: https://github.com
+          DEVICE_TREE_BRANCH: lineage-23
+          BUILD_TARGET: recovery
