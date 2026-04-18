@@ -24,7 +24,7 @@ jobs:
           git config --global user.name "Your Name"
           
           # Твоя новая правильная ссылка
-          repo init --no-repo-verify --depth=1 -u https://github.com/OrangeFoxRecovery/fox-6.0_manifest -b fox-6.0
+          repo init --no-repo-verify --depth=1 -u https://github.com/OrangeFoxRecovery/fox-6.0_manifest -b fox_6.0
           
           # Начинаем качать (теперь точно должно пойти!)
           repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle --prune
