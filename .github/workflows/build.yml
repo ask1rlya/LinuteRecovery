@@ -1,0 +1,10 @@
+# mount point       fstype    device                                                                flags
+/system_root           ext4     /dev/block/mapper/system        wait,slotselect,logical,first_stage_mount
+/vendor                ext4     /dev/block/mapper/vendor        wait,slotselect,logical,first_stage_mount
+/product               ext4     /dev/block/mapper/product       wait,slotselect,logical,first_stage_mount
+/metadata              ext4     /dev/block/by-name/metadata     wait,check,formattable,first_stage_mount
+/data                  f2fs     /dev/block/by-name/userdata     wait,check,quota,reservedsize=128M,checkpoint=fs
+/misc                  emmc     /dev/block/by-name/misc         defaults
+/boot                  emmc     /dev/block/by-name/boot         wait,slotselect
+/external_sd           vfat     /dev/block/mmcblk0p1            /dev/block/mmcblk0   flags=display="MicroSD";storage;wipeui;removable
+/usb_otg               vfat     /dev/block/sdg1                 /dev/block/sdg       flags=display="USB-OTG";storage;wipeui;removable
