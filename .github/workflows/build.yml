@@ -23,7 +23,7 @@ jobs:
           git config --global user.name "Your Name"
           
           # Используем только чистую ссылку на репозиторий
-          git clone https://gitlab.com/OrangeFox/sync/-/tree/master/info/refs?service=git-upload-pack/info/refs&service=git-upload-pack sync_folder
+          git clone https://gitlab.com/OrangeFox/sync.git
           
           # Переходим именно в ту папку, которую создали выше
           cd sync_folder
