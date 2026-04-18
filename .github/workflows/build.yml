@@ -1,7 +1,7 @@
 name: Linute Recovery Build
 
 on:
-  workflow_dispatch: # Это создаст кнопку запуска
+  workflow_dispatch:
 
 jobs:
   build:
@@ -10,11 +10,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build Linute
-        uses: OrangeFoxRecovery/OrangeFox-Builder@main
+      - name: Recovery Build Action
+        uses: GearS3/Recovery-Builder-Action@main
         with:
-          DEVICE_NAME: fog
+          # Ссылка на твое дерево (проверь, чтобы была без двойных https)
           DEVICE_TREE: https://github.com
           DEVICE_TREE_BRANCH: lineage-23.0
+          DEVICE_NAME: fog
+          # Тип рекавери (fox - для OrangeFox)
+          RECOVERY_TYPE: fox
           BUILD_TARGET: recovery
-          
