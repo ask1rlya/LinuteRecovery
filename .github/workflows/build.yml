@@ -10,13 +10,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Recovery Build Action
-        uses: GearS3/Recovery-Builder-Action@main
-        with:
-          # Ссылка на твое дерево (проверь, чтобы была без двойных https)
-          DEVICE_TREE: https://github.com
-          DEVICE_TREE_BRANCH: lineage-23.0
-          DEVICE_NAME: fog
-          # Тип рекавери (fox - для OrangeFox)
-          RECOVERY_TYPE: fox
-          BUILD_TARGET: recovery
+      - name: Install Build Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc build-essential zip curl libc6-dev libncurses5-dev libssl-dev python3 repo
+
+      - name: Setup Linute (OrangeFox) Sync
+        run: |
+          mkdir ~/orangefox
+          cd ~/orangefox
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          # Скачиваем загрузчик исходников
+          git clone https://gitlab.com
+          cd scripts
+          # Запускаем синхронизацию (это будет долго!)
+          bash setup/android_build_setup.sh
+          
+      - name: Clone Device Tree
+        run: |
+          cd ~/orangefox
+          git clone https://github.com -b lineage-23.0 device/xiaomi/fog
+
+      - name: Start Compilation
+        run: |
+          echo "Здесь начнется магия сборки Linute..."
