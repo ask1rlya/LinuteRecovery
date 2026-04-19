@@ -32,13 +32,13 @@ jobs:
           
       - name: Check Structure
         run: |
-          echo "=== fox_11.0 contents ==="
-          ls ~/fox_11.0/ || echo "fox_11.0 не существует"
-          echo "=== Home contents ==="
+          echo "=== Home ==="
           ls ~/
-          echo "=== build folder ==="
+          echo "=== fox_11.0 ==="
+          ls ~/fox_11.0/ || echo "папки нет"
+          echo "=== envsetup.sh search ==="
           find ~/ -name "envsetup.sh" 2>/dev/null | head -10
-          
+
       - name: Start Compilation
         run: |
           cd ~/fox_11.0
