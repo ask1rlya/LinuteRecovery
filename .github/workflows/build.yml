@@ -29,7 +29,16 @@ jobs:
           cp -r /tmp/tree/twrp_xiaomi_fog-twrp-11/. ~/fox_11.0/device/xiaomi/fog/
           rm -rf /tmp/tree /tmp/tree.zip
           ls ~/fox_11.0/device/xiaomi/fog/
-
+          
+      - name: Check Structure
+        run: |
+          echo "=== fox_11.0 contents ==="
+          ls ~/fox_11.0/ || echo "fox_11.0 не существует"
+          echo "=== Home contents ==="
+          ls ~/
+          echo "=== build folder ==="
+          find ~/ -name "envsetup.sh" 2>/dev/null | head -10
+          
       - name: Start Compilation
         run: |
           cd ~/fox_11.0
