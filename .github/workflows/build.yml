@@ -24,23 +24,13 @@ jobs:
       - name: Clone Device Tree
         run: |
           mkdir -p ~/fox_12.1/device/xiaomi/fog
-          cd ~/fox_12.1/device/xiaomi/fog
-          wget -q "https://github.com/cd-Crypton/android_device_xiaomi_fog-TWRP/archive/refs/heads/android-12.1.zip" -O tree.zip
-          unzip -q tree.zip
-          mv android_device_xiaomi_fog-TWRP-android-12.1/* .
-          rm -rf tree.zip android_device_xiaomi_fog-TWRP-android-12.1
+          curl -L "https://github.com/cd-Crypton/android_device_xiaomi_fog-TWRP/archive/refs/heads/android-12.1.zip" -o /tmp/tree.zip
+          unzip -q /tmp/tree.zip -d /tmp/tree
+          cp -r /tmp/tree/android_device_xiaomi_fog-TWRP-android-12.1/. ~/fox_12.1/device/xiaomi/fog/
+          rm -rf /tmp/tree /tmp/tree.zip
 
       - name: Start Compilation
         run: |
           cd ~/fox_12.1
           export ALLOW_MISSING_DEPENDENCIES=true
           export FOX_BUILD_TYPE=Unofficial
-          source build/envsetup.sh
-          lunch twrp_fog-eng
-          mka recoveryimage 2>&1 | tee build.log
-
-      - name: Upload Recovery
-        uses: actions/upload-artifact@v4
-        with:
-          name: Linute-Recovery-fog
-          path: ~/fox_12.1/out/target/product/fog/recovery.im
